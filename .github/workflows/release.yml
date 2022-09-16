@@ -6,7 +6,7 @@ on:
       - 'main'
 
 env:
-  TEST_TAG: ${{DOCKERHUB_USERNAME}}/dev-environments:test
+  TEST_TAG: madalintech/dev-environments:test
 
 jobs:
   build:
