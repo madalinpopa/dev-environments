@@ -8,6 +8,7 @@ on:
 env:
   IMAGE_NAME: dev-environments
   TEST_TAG: dev-environments:test
+  PROD_TAG: dev-environments:latest
 
 jobs:
   build:
