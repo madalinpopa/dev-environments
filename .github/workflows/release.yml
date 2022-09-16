@@ -6,7 +6,7 @@ on:
       - 'main'
 
 env:
-  TEST_TAG: madalintech/dev-environments:test
+  TEST_TAG: dev-environments:test
 
 jobs:
   build:
