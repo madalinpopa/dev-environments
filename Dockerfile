@@ -59,11 +59,7 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | b
 USER "${USERNAME}"
 
 ENV PYTHONUNBUFFERED 1
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV LANGUAGE=en_US.UTF-8
-ENV LC_ALL=en_US.UTF-8
-ENV LANG=en_US.UTF-8
-ENV LC_CTYPE=en_US.UTF-8
+ENV PYTHONDONTWRITEBYTECODE
 ENV PATH="/home/$USERNAME/.local/bin:${PATH}"
 
 # ********************************************************
