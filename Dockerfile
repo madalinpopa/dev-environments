@@ -40,12 +40,6 @@ RUN groupadd --gid $USER_GID $USERNAME \
     && chmod 0440 /etc/sudoers.d/$USERNAME
 
 # ********************************************************
-# * Install python3.9                                    *
-# ********************************************************
-# RUN apt-get install --no-install-recommends -y python3-full \
-#     && apt-get install --no-install-recommends -y python3-pip
-
-# ********************************************************
 # * Install NVM and Nodejs                               *
 # ********************************************************
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash \
