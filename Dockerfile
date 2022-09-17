@@ -42,8 +42,8 @@ RUN groupadd --gid $USER_GID $USERNAME \
 # ********************************************************
 # * Install python3.9                                    *
 # ********************************************************
-RUN apt-get install --no-install-recommends -y python3-full \
-    && apt-get install --no-install-recommends -y python3-pip
+# RUN apt-get install --no-install-recommends -y python3-full \
+#     && apt-get install --no-install-recommends -y python3-pip
 
 # ********************************************************
 # * Install NVM and Nodejs                               *
