@@ -14,27 +14,37 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     apt-transport-https \
     software-properties-common
 
-# Create an environment variable to hold the user
-ENV DOCKER_USER vscode
-
+# ********************************************************
+# * Create a non root user                               *
+# ********************************************************
+ENV USERNAME=vscode
+ENV USER_UID=1000
+ENV USER_GID=$USER_UID
 # Create a passwordless user and sudo. This is for a local development
 # environment. DON'T DO THIS IN PRODUCTION
-RUN adduser --disabled-password --gecos '' "${DOCKER_USER}" \
-    && adduser "${DOCKER_USER}" sudo \
-    && echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+RUN groupadd --gid $USER_GID $USERNAME \
+    && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME \
+    && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
+    && chmod 0440 /etc/sudoers.d/$USERNAME
 
-# Install python3.9
+# ********************************************************
+# * Install python3.9                                    *
+# ********************************************************
 RUN apt-get install --no-install-recommends -y python3-full \
     && apt-get install --no-install-recommends -y python3-pip
 
-# Install NVM and Nodejs
+# ********************************************************
+# * Install NVM and Nodejs                               *
+# ********************************************************
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash \
     && export NVM_DIR="$HOME/.nvm" \
     && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" \
     && nvm install --lts
 
-# Set the user to be our newly created user by default.
-USER "${DOCKER_USER}"
+# ********************************************************
+# * Set the default user to run in container             *
+# ********************************************************
+USER "${USERNAME}"
 
 ENV PYTHONUNBUFFERED 1
 ENV PYTHONDONTWRITEBYTECODE 1
