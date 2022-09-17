@@ -1,6 +1,8 @@
 FROM debian:11
 
-# Update the system and install the needed packages
+# ********************************************************
+# * Install needed packages and updates                  *
+# ********************************************************
 RUN apt-get update && apt-get install --no-install-recommends -y \
     git \
     vim \
