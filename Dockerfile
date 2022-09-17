@@ -54,10 +54,14 @@ ENV LANG=en_US.UTF-8
 ENV LC_CTYPE=en_US.UTF-8
 ENV PATH="/home/${DOCKER_USER}/.local/bin:${PATH}"
 
-# Clone and setup the dotfiles
+# ********************************************************
+# * Clone and install the dotfiles                       *
+# ********************************************************
 RUN git clone https://github.com/madalinpopa/dotfiles.git ~/.dotfiles \
     && cd ~/.dotfiles \
     && ./install
 
-# This will determine where we will start when we enter the container.
+# ********************************************************
+# * Set the default working directory                    *
+# ********************************************************
 WORKDIR "/home/${DOCKER_USER}"
