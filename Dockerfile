@@ -52,7 +52,7 @@ ENV LANGUAGE=en_US.UTF-8
 ENV LC_ALL=en_US.UTF-8
 ENV LANG=en_US.UTF-8
 ENV LC_CTYPE=en_US.UTF-8
-ENV PATH="/home/${DOCKER_USER}/.local/bin:${PATH}"
+ENV PATH="/home/$USERNAME/.local/bin:${PATH}"
 
 # ********************************************************
 # * Clone and install the dotfiles                       *
@@ -64,4 +64,4 @@ RUN git clone https://github.com/madalinpopa/dotfiles.git ~/.dotfiles \
 # ********************************************************
 # * Set the default working directory                    *
 # ********************************************************
-WORKDIR "/home/${DOCKER_USER}"
+WORKDIR "/home/$USERNAME"
