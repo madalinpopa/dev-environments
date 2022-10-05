@@ -8,6 +8,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     vim \
     curl \
     sudo \
+    zsh \
     man-db \
     locales \
     bash-completion \
@@ -46,6 +47,11 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | b
     && export NVM_DIR="$HOME/.nvm" \
     && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" \
     && nvm install --lts
+
+# ********************************************************
+# *Change default shell                                  *
+# ********************************************************
+RUN chsh -s $(which zsh)
 
 # ********************************************************
 # * Set the default user to run in container             *
